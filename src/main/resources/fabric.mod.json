@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "minepresencemod",
+  "version": "${version}",
+  "name": "MinePresence",
+  "description": "Client-side borderless fullscreen and Discord desktop-share guard for Minecraft.",
+  "authors": [
+    "minepresencemod contributors"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.minepresence.minepresencemod.MinePresenceMod"
+    ],
+    "modmenu": [
+      "com.minepresence.minepresencemod.MinePresenceModMenuApi"
+    ]
+  },
+  "mixins": [
+    "minepresencemod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}",
+    "java": ">=25"
+  },
+  "suggests": {
+    "fabric-api": ">=0.154.0+26.2",
+    "modmenu": ">=${modmenu_version}",
+    "sodium": "*",
+    "iris": "*"
+  }
+}

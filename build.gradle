@@ -1,0 +1,112 @@
+plugins {
+    id "fabric-loom" version "${loom_version}"
+    id "maven-publish"
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven {
+        name = "LocalIntermediaryShim"
+        url = uri("local-maven")
+        content {
+            includeModule("net.fabricmc", "intermediary")
+        }
+    }
+    maven {
+        name = "FabricIntermediaryArtifactOnly"
+        url = "https://maven.fabricmc.net/"
+        metadataSources {
+            artifact()
+        }
+        content {
+            includeModule("net.fabricmc", "intermediary")
+        }
+    }
+    maven {
+        name = "Fabric"
+        url = "https://maven.fabricmc.net/"
+        content {
+            excludeModule("net.fabricmc", "intermediary")
+        }
+    }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/releases/"
+    }
+    mavenCentral()
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        minepresencemod {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+configurations.configureEach {
+    resolutionStrategy.dependencySubstitution {
+        substitute(module("net.fabricmc:intermediary:${project.minecraft_version}"))
+                .using(module("net.fabricmc:intermediary:${project.minecraft_version}"))
+                .because("Fabric Maven reports a 0.0.0 descriptor for Minecraft 26.2 intermediary")
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:intermediary:${project.minecraft_version}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}") {
+        transitive = false
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "loader_version", project.loader_version
+    inputs.property "modmenu_version", project.modmenu_version
+
+    filesMatching("fabric.mod.json") {
+        expand(
+                "version": project.version,
+                "minecraft_version": project.minecraft_version,
+                "loader_version": project.loader_version,
+                "modmenu_version": project.modmenu_version
+        )
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.toVersion(25)
+    targetCompatibility = JavaVersion.toVersion(25)
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${base.archivesName.get()}" }
+    }
+}
+
+publishing {
+    publications {
+        create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+}
