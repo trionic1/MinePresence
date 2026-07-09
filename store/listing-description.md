@@ -75,4 +75,4 @@ No Minecraft-side mod can promise perfect Discord capture on *every* GPU, driver
 
 ## Source & license
 
-Open source under the **MIT License**. Source and issue tracker: <!-- TODO: your GitHub URL -->
+Open source under the **MIT License**. Source and issue tracker: <https://github.com/trionic1/MinePresence>

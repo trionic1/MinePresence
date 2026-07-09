@@ -5,9 +5,13 @@
   "name": "MinePresence",
   "description": "Client-side borderless fullscreen and Discord desktop-share guard for Minecraft.",
   "authors": [
-    "minepresencemod contributors"
+    "trionic1"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://github.com/trionic1/MinePresence",
+    "sources": "https://github.com/trionic1/MinePresence",
+    "issues": "https://github.com/trionic1/MinePresence/issues"
+  },
   "license": "MIT",
   "environment": "client",
   "entrypoints": {

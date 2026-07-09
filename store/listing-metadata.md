@@ -3,7 +3,7 @@
 Everything you need to paste into CurseForge and Modrinth. The long description
 lives in `listing-description.md` (Markdown; both sites accept Markdown).
 
-Placeholders you must fill: **<YOUR_GITHUB_URL>**, **<YOUR_AUTHOR_NAME>**.
+Repo: <https://github.com/trionic1/MinePresence> — author: trionic1
 
 ---
 
@@ -42,8 +42,8 @@ Placeholders you must fill: **<YOUR_GITHUB_URL>**, **<YOUR_AUTHOR_NAME>**.
   - Optional: Fabric API — *Optional*
   - Optional: Mod Menu — *Optional*
   - (Do NOT mark Sodium/Iris/Lithium/ModernFix/Cubes Without Borders — they're compatible, not dependencies.)
-- **Source URL:** <YOUR_GITHUB_URL>
-- **Issues URL:** <YOUR_GITHUB_URL>/issues
+- **Source URL:** https://github.com/trionic1/MinePresence
+- **Issues URL:** https://github.com/trionic1/MinePresence/issues
 
 ## Modrinth
 
@@ -56,8 +56,8 @@ Placeholders you must fill: **<YOUR_GITHUB_URL>**, **<YOUR_AUTHOR_NAME>**.
 - **License:** MIT
 - **Body:** paste `listing-description.md`
 - **Links:**
-  - Source: <YOUR_GITHUB_URL>
-  - Issues: <YOUR_GITHUB_URL>/issues
+  - Source: https://github.com/trionic1/MinePresence
+  - Issues: https://github.com/trionic1/MinePresence/issues
 - **Dependencies:**
   - Fabric API — Optional
   - Mod Menu — Optional
@@ -79,7 +79,7 @@ Placeholders you must fill: **<YOUR_GITHUB_URL>**, **<YOUR_AUTHOR_NAME>**.
 
 ## Before you upload — quick checklist
 
-- [ ] Fill `<YOUR_GITHUB_URL>` in `listing-description.md` and this file.
-- [ ] Set author/contact in `src/main/resources/fabric.mod.json` (`authors`, `contact.homepage`, `contact.sources`, `contact.issues`) — currently placeholder "minepresencemod contributors" with empty contact. Ask me and I'll wire these in once you have the GitHub URL.
+- [x] GitHub URL filled in `listing-description.md` and this file.
+- [x] Author/contact set in `src/main/resources/fabric.mod.json`.
 - [ ] Optional: add an icon (CurseForge 400x400, Modrinth 512x512 recommended) and a screenshot or short clip of a smooth Discord share.
 - [ ] Confirm the jar in `build/libs/` is `0.3.0` and loads cleanly (it does on your instance).
